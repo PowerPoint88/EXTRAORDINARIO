@@ -1,3 +1,4 @@
+
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        Contraseña:<input type="text" name="pass" size="30">
+       
         <% 
         Connection con = null;
                         Statement set = null;
@@ -26,21 +27,23 @@
                                 //necesito los parametros del formulario
                                 String q;
                                 
-                                q = "select * from registro where";
+                                q = "select * from registro order by pass";
                                 
                                 rs = set.executeQuery(q);
                                 while(rs.next()){
                                     %>
-                                    <h1>Registro exitoso</h1>
-                                    <h1>Consultas</h1>   
+                                   
+                                    <h1>Consultas</h1> 
+                                    <table>
                 <tr>
-                    <td><%=rs.getInt("id_usu")%></td>
+                    <td><%=rs.getInt("id_usuario")%></td>
                     <td><%=rs.getString("nombre")%> </td>
                     <td><%=rs.getString("puesto")%> </td>
                     <td><%=rs.getString("sueldo")%> </td>
                     
                                         
-                </tr>   
+                </tr>
+                                    </table>
                 <a href="index.html">Regresar a la Pagina Principal</a>
                                     
                                     <%
